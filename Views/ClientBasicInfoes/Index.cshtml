@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BankQ1Investment.Models.ClientBasicInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container body-content">
+    <div class="row">
+        <div>
+            <img src="~/Images/BankQ1HomePage.png" />
+        </div>
+    </div>
+</div>
+
+
+
+<h1 style="color:darkorange" class="font-weight-bolder jumbotron">OUR CUSTOMERS:</h1>  @*Here, I added a Jumbotron class.*@
+
+<p>
+    <div>
+            <a asp-action="Create" class="btn btn-warning" style="color:black">Create New Customer</a>
+    </div>
+</p>
+
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr class="btn-warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Current_Investment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Current_Investment)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Customer_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Customer_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Customer_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
